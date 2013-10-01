@@ -43,11 +43,48 @@ ul.posts li {
   line-height: 1.75em;
 }
 
-ul.posts span {
+.posts span {
   color: #aaa;
   font-family: Monaco, "Courier New", monospace;
   font-size: 80%;
 }
+
+/*****************************************************************************/
+/*
+/* Nav
+/*
+/*****************************************************************************/
+
+.extra {
+	color: #ffffff;
+	padding: 2px 4px 2px 4px;
+	text-transform: uppercase;
+}
+.extra:hover {
+	color: #282828;
+	text-decoration: none;
+}
+.nav-posts {
+	background-color: #5986be;
+}
+.nav-about {
+	background-color: #6dd072;
+}
+.nav-portfolio {
+	background-color: #c45fbf;
+}
+
+.page-heading {
+	color: #ffffff;
+	padding: 2px 4px 2px 4px;
+	text-transform: capitalize;
+}
+
+.page-heading:hover {
+	text-decoration: none;
+	color: #ffffff;
+}
+
 
 /*****************************************************************************/
 /*
@@ -124,7 +161,7 @@ ul.posts span {
 .foot {
 	margin-top: 30px;
 	padding-top: 15px;
-	border-top: 2px solid #b6435a;
+	border-top: 2px solid #c45fbf;
 }
 
 img {
@@ -191,5 +228,5 @@ img {
 }
 
 .About h1, h2, h3 {
-	color: #61bf46;
+	color: #282828;
 }
