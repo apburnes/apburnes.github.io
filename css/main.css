@@ -5,7 +5,7 @@
 /*****************************************************************************/
 
 /* Global Reset */
-* {
+/** {
   margin: 0;
   padding: 0;
 }
@@ -27,7 +27,7 @@ p { margin: 1em 0; }
 
 a         { color: #00a; }
 a:hover   { color: #000; }
-a:visited { color: #a0a; }
+a:visited { color: #a0a; }*/
 
 /*****************************************************************************/
 /*
@@ -98,7 +98,7 @@ ul.posts span {
   font-size: 80%;
   color: #666;
   border-top: 4px solid #eee;
-  margin-top: 2em;
+  margin-top: 25px;
   overflow: hidden;
 }
 
@@ -119,6 +119,16 @@ ul.posts span {
 
 .site .footer .rss img {
   border: 0;
+}
+
+.foot {
+	margin-top: 30px;
+	padding-top: 15px;
+	border-top: 2px solid #b6435a;
+}
+
+img {
+	vertical-align: middle;
 }
 
 /*****************************************************************************/
@@ -157,4 +167,29 @@ ul.posts span {
 
 .post pre.terminal code {
   background-color: #333;
+}
+
+/**********************
+/*about 
+***********************/
+
+.page-header {
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.image-responsive {
+	display: block;
+	height: auto;
+	max-width: 100%;
+}
+
+.about-me {
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+
+.About h1, h2, h3 {
+	color: #61bf46;
 }
