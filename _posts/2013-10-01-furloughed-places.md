@@ -7,14 +7,11 @@ summary: "October 1, 2013 the US Government implemented a shutdown. As a Federal
 image: "/img/usda_closed.png"
 ---
 
-
-
 ###As of today:###
 
 I, **Andrew Burnes**, am on furlough due to lack of a US Federal budget which resulted in a shutdown of the US Government.  I am a [GIS][gis-wiki] Analyst for the USDA Natural Resources Conservation Service.  I may be "out" but I'm **not** down; finally, I can take this time to work full-time on passion projects. This blog will act as a reflection of my learning experiences, work, and interest. Honestly, I want to get shit done.  Together we will laugh and cry, live and learn, and hopefully more than just a few friends will read this once... kinda... never again.
 
-
-
+<br />
 
 ###Day 1: Build Blog###
 
@@ -24,7 +21,7 @@ I, **Andrew Burnes**, am on furlough due to lack of a US Federal budget which re
 - [Github Pages][gh-pages]
 - [Bootstrap][getbootstrap]
 
-
+<br />
 
 ####1: Static Pages####
 

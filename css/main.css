@@ -260,6 +260,18 @@ code {
 	text-decoration: none;
 	list-style-type: square;
 }
+
+h3.about-head strong {
+	background-color: #a5e3a9;
+	color: #ffffff;
+	padding: 2px 6px 2px 6px;
+}
+
+h4.about-head strong {
+	background-color: #a5e3a9;
+	color: #ffffff;
+	padding: 2px 6px 2px 6px;
+}
 /**********************
 /*posts && portfolio
 ***********************/
@@ -296,6 +308,10 @@ code {
   color: #aaa;
   font-family: Monaco, "Courier New", monospace;
   font-size: 80%;
+}
+
+.post-body {
+	margin-top: 45px;
 }
 
 .summary {
