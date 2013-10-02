@@ -9,12 +9,12 @@ title: Dry Heat Burnes
     <h2 class="page-header"><a class="page-heading nav-posts">Posts</a></h2>
   </div>
 </div>
-<div class=row>
+<div class="row">
     {% for post in site.posts %}
       <div id="posts" class="col-lg-4 col-md-6 col-sm-12">
         <a style="display:block" href="{{ post.url }}" class="post-link">
         <div class="col-12 posts">
-          <h3>{{ post.title }}</h3>
+          <h3><strong>{{ post.title }}</strong></h3>
           <p class="summary">{{ post.summary }}</p>
           <p><span>{{ post.date | date_to_string }}</span></p>
         </div>
