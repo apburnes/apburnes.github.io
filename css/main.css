@@ -48,12 +48,13 @@ p, li {
 }
 
 a {
-	color: #7f7f7f;
+	color: #fe6700;
+	font-weight: bold;
 }
 
 a:hover {
 	text-decoration: none;
-	color: #999999;
+	color: #7b3303;
 }
 /*****************************************************************************/
 /*
