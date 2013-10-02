@@ -11,9 +11,14 @@ title: Dry Heat Burnes
 </div>
 <div class=row>
     {% for post in site.posts %}
-      <div id="posts" class="col-lg-3 col-md-3">
-        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-        <p><span>{{ post.date | date_to_string }}</span></p>
+      <div id="posts" class="col-lg-4 col-md-6 col-sm-12">
+        <a style="display:block" href="{{ post.url }}" class="post-link">
+        <div class="col-12 posts">
+          <h3>{{ post.title }}</h3>
+          <p class="summary">{{ post.summary }}</p>
+          <p><span>{{ post.date | date_to_string }}</span></p>
+        </div>
+        </a>
       </div>
       <!-- <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li> -->
     {% endfor %}

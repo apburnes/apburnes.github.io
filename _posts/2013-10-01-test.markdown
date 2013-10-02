@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2013-10-01 09:43:50
+title:  "Test"
+date:   2013-10-02 09:44:50
 categories: jekyll update
-summary: "This is the template post which is here to help.  Let's get rocking!"
+summary: "This is a test post about everything I want to do.  I hope it comes out ok!"
 ---
 
 You'll find this post in your `_posts` directory - edit this post and re-build (or run with the `-w` switch) to see your changes!

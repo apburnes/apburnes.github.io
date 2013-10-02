@@ -43,49 +43,6 @@ ul.posts li {
   line-height: 1.75em;
 }
 
-.posts span {
-  color: #aaa;
-  font-family: Monaco, "Courier New", monospace;
-  font-size: 80%;
-}
-
-/*****************************************************************************/
-/*
-/* Nav
-/*
-/*****************************************************************************/
-
-.extra {
-	color: #ffffff;
-	padding: 2px 4px 2px 4px;
-	text-transform: uppercase;
-}
-.extra:hover {
-	color: #282828;
-	text-decoration: none;
-}
-.nav-posts {
-	background-color: #5986be;
-}
-.nav-about {
-	background-color: #6dd072;
-}
-.nav-portfolio {
-	background-color: #c45fbf;
-}
-
-.page-heading {
-	color: #ffffff;
-	padding: 2px 4px 2px 4px;
-	text-transform: capitalize;
-}
-
-.page-heading:hover {
-	text-decoration: none;
-	color: #ffffff;
-}
-
-
 /*****************************************************************************/
 /*
 /* Site
@@ -158,12 +115,6 @@ ul.posts li {
   border: 0;
 }
 
-.foot {
-	margin-top: 30px;
-	padding-top: 15px;
-	border-top: 2px solid #c45fbf;
-}
-
 img {
 	vertical-align: middle;
 }
@@ -206,6 +157,48 @@ img {
   background-color: #333;
 }
 
+.post span {
+  color: #aaa;
+  font-family: Monaco, "Courier New", monospace;
+  font-size: 80%;
+}
+
+/*****************************************************************************/
+/*
+/* Nav
+/*
+/*****************************************************************************/
+
+.extra {
+	color: #ffffff;
+	padding: 2px 4px 2px 4px;
+	text-transform: uppercase;
+}
+.extra:hover {
+	color: #282828;
+	text-decoration: none;
+}
+.nav-posts {
+	background-color: #5986be;
+}
+.nav-about {
+	background-color: #6dd072;
+}
+.nav-portfolio {
+	background-color: #c45fbf;
+}
+
+.page-heading {
+	color: #ffffff;
+	padding: 2px 4px 2px 4px;
+	text-transform: capitalize;
+}
+
+.page-heading:hover {
+	text-decoration: none;
+	color: #ffffff;
+}
+
 /**********************
 /*about 
 ***********************/
@@ -214,6 +207,7 @@ img {
   padding-bottom: 9px;
   margin: 40px 0 20px;
   border-bottom: 1px solid #eeeeee;
+	color: #7f7f7f;
 }
 
 .image-responsive {
@@ -229,4 +223,53 @@ img {
 
 .About h1, h2, h3 {
 	color: #282828;
+}
+
+/**********************
+/*posts
+***********************/
+
+.posts {
+	border: solid 1px #eeeeee;
+	border-bottom: solid 3px #7f7f7f;
+	margin-bottom: 10px;
+	padding: 0 10px 0 10px;
+}
+
+.posts h3 {
+	color: #7f7f7f;
+}
+
+.post-link:hover {
+	text-decoration: none;
+	background-color: #eeeeee;
+}
+
+.post-heading {
+	padding: 2px 4px 2px 4px;
+	text-transform: capitalize;
+	color: #7f7f7f;
+}
+
+.posts span {
+  color: #aaa;
+  font-family: Monaco, "Courier New", monospace;
+  font-size: 80%;
+}
+
+.summary {
+	color: #7f7f7f;
+}
+
+/**********************
+/*footer
+***********************/
+.foot {
+	margin-top: 30px;
+	padding-top: 15px;
+	border-top: 3px solid #7f7f7f;
+}
+
+.contact {
+	margin-top: 6px;
 }
