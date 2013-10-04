@@ -45,23 +45,28 @@ ul.posts li {
 
 p, li {
 	color: #454545;
+	font-size: 1.4em;
 }
 
 a {
-	color: #fe6700;
+	color: #c14646;
 	font-weight: bold;
 }
 
 a:hover {
 	text-decoration: none;
-	color: #7b3303;
+	color: #a14646;
 }
 /*****************************************************************************/
 /*
 /* Site
 /*
 /*****************************************************************************/
-
+.container {
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+}
 .site {
   font-size: 115%;
   text-align: justify;
@@ -132,18 +137,6 @@ img {
 	vertical-align: middle;
 }
 
-h3 strong {
-	background-color: #999999;
-	color: #ffffff;
-	padding: 2px 6px 2px 6px;
-}
-
-h4 strong {
-	background-color: #6dd072;
-	color: #ffffff;
-	padding: 2px 6px 2px 6px;
-}
-
 /*****************************************************************************/
 /*
 /* Posts
@@ -197,6 +190,26 @@ code {
 /* Nav
 /*
 /*****************************************************************************/
+h1.title a {
+	color: #454545;
+	font-size: 1.7em;
+	font-family: Courier,	 Georgia;
+}
+
+h1.title a:hover {
+	color: #7f7f7f;
+}
+
+.header-pane {
+	background-color: yellow;
+	padding: 10px 5px 10px 5px;
+	max-height: 200px;
+}
+
+.header-panel {
+	position: absolute;
+	bottom: 0;
+} 
 
 .extra {
 	color: #ffffff;
@@ -204,17 +217,17 @@ code {
 	text-transform: uppercase;
 }
 .extra:hover {
-	color: #282828;
+	color: #7f7f7f;
 	text-decoration: none;
 }
 .nav-posts {
-	background-color: #5986be;
+	background-color: #454545;
 }
 .nav-about {
-	background-color: #6dd072;
+	background-color: #454545;
 }
 .nav-portfolio {
-	background-color: #c45fbf;
+	background-color: #454545;
 }
 
 .page-heading {
@@ -239,20 +252,19 @@ code {
 	color: #7f7f7f;
 }
 
-.image-responsive {
-	display: block;
-	height: auto;
-	max-width: 100%;
-	border: solid 2px #454545;
+.img-responsive {
+	margin: 0px auto;
+	border: solid 2px #000;
+}
+
+.logo {
+	border: none;
+	max-height: 170px;
 }
 
 .about-me {
 	margin-top: 15px;
 	margin-bottom: 10px;
-}
-
-.About h1, h2, h3 {
-	color: #282828;
 }
 
 .the-focus {
@@ -261,36 +273,16 @@ code {
 	list-style-type: square;
 }
 
-h3.about-head strong {
-	background-color: #a5e3a9;
-	color: #ffffff;
-	padding: 2px 6px 2px 6px;
-}
-
-h4.about-head strong {
-	background-color: #a5e3a9;
-	color: #ffffff;
-	padding: 2px 6px 2px 6px;
-}
 /**********************
 /*posts && portfolio
 ***********************/
-
-.project h3 strong {
-	background-color: #d995d6;
-	color: #ffffff;
-}
 
 .posts {
 	border: solid 1px #eeeeee;
 	border-bottom: solid 3px #7f7f7f;
 	margin-bottom: 10px;
 	padding: 0 10px 0 10px;
-}
-
-.posts h3 strong {
-	background-color: #8eadd4;
-	color: #ffffff;
+	background-size: cover;
 }
 
 .post-link:hover {
@@ -315,6 +307,21 @@ h4.about-head strong {
 }
 
 .summary {
+	color: #7f7f7f;
+}
+
+.comments {
+	margin: 45px 0 45px 0;
+	padding-top: 45px;
+	border-top: solid 1px #eeeeee;
+}
+
+.gh-link {
+	font-size: .9em;
+	color: #eeeeee;
+}
+
+.gh-link:hover {
 	color: #7f7f7f;
 }
 

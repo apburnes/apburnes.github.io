@@ -14,15 +14,25 @@
 
     </head>
     <body>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-offset-2 col-md-8">
-            <h1 class="title"><a href="/">{{ site.name }}</a></h1>
-            <a class="extra nav-posts" href="/">posts</a>
-            <a class="extra nav-about" href="/about.html">about</a>
-            <a class="extra nav-portfolio" href="/portfolio.html">portfolio</a>
+      <div class="header-pane">
+        <div class="container">
+          <div class="row header-pannel">
+            <div class="col-lg-2 col-md-3 col-sm-4">
+              <a href='/'>
+                <img class="image-responsive logo pull-right" src="/img/logo-waves.png" alt="logo">
+                </img>      
+              </a>
+            </div>
+            <div class="col-lg-10 col-md-9 col-sm-8">
+              <h1 class="title"><a href="/">{{ site.name }}</a></h1>
+              <a class="extra nav-posts" href="/">posts</a>
+              <a class="extra nav-about" href="/about.html">about</a>
+              <a class="extra nav-portfolio" href="/portfolio.html">portfolio</a>
+            </div>
           </div>
         </div>
+      </div>  
+      <div class="container">
             {{ content }}
         <div class="row foot">
           <div class="col-sm-4">
