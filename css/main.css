@@ -4,10 +4,10 @@ h1, h2, h3, h4, h5, h6, p, body, a, img, ul, ol, blockquote, pre {
 }
 
 body {
-  font-family: 'Lora', serif;
+  font-family: 'Futura', sans-serif;
   font-size: 21px;
   line-height: 1.52;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   text-rendering: optimizeLegibility;
 }
 
@@ -17,11 +17,11 @@ body {
 }
 
 body, a {
-  color: #171717;
+  color: #1c1c1c;
 }
 
 a:hover {
-  color: #ff8000;
+  color: #000000;
   text-decoration: underline;
 }
 
@@ -177,7 +177,7 @@ footer .copy, footer .copy a {
 }
 
 .article header {
-  border-top: 1px dashed #d2d2d2;
+  border-top: 1px dashed #ffbcbc;
 }
 
 .article header h2 {
@@ -199,7 +199,7 @@ footer .copy, footer .copy a {
 }
 
 .article header .date span {
-  background-color: #f8f8f8;
+  background-color: #ffbcbc;
   padding: 0 0.7em;
 }
 
