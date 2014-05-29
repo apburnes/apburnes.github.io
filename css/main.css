@@ -21,7 +21,7 @@ body, a {
 }
 
 a:hover {
-  color: #000000;
+  color: #002c49;
   text-decoration: underline;
 }
 
@@ -42,6 +42,10 @@ pre {
 h1 {
   font-size: 2em;
   margin-bottom: 1em;
+}
+
+h1>a:hover {
+  color: #002c49;
 }
 
 h2 {
@@ -84,12 +88,12 @@ hr {
 /* page header */
 
 .header {
-  margin: 3em 0 5em;
+  margin: 1em 0 5em;
 }
 
 .header h1 {
   font-size: 2.6em;
-  text-align: center;
+/*   text-align: center; */
   font-weight: 700;
   margin: 0;
 }
@@ -177,7 +181,7 @@ footer .copy, footer .copy a {
 }
 
 .article header {
-  border-top: 1px dashed #ffbcbc;
+  border-top: 1px dashed #9e9e9e;
 }
 
 .article header h2 {
@@ -193,13 +197,14 @@ footer .copy, footer .copy a {
 }
 
 .article header .date {
-  text-align: center;
+/*   text-align: center; */
   font-size: 0.8em;
   margin-top: -0.7em;
 }
 
 .article header .date span {
-  background-color: #ffbcbc;
+  border: solid 1px #9e9e9e;
+  background-color: #fff;
   padding: 0 0.7em;
 }
 
@@ -225,6 +230,67 @@ footer .copy, footer .copy a {
   font-weight: 400;
   text-rendering: auto;
   letter-spacing: 1px;
+}
+
+/* project */
+.project {
+  margin: 3em 0 4em;
+}
+
+.project header {
+  border-top: 1px dashed #9e9e9e;
+}
+
+.project header h2 {
+  text-transform: uppercase;
+  font-weight: 400;
+  margin: 0.8em 0;
+  font-size: 1.4em;
+}
+
+.project header h2 a {
+  text-decoration: none;
+}
+
+.project header .date {
+/*   text-align: center; */
+  font-size: 0.8em;
+  margin-top: -0.7em;
+}
+
+.project header .date span {
+  border: solid 1px #9e9e9e;
+  background-color: #fff;
+  padding: 0 0.7em;
+}
+
+.project.intro .content p {
+  display: inline;
+}
+.project.intro .content {
+  display: inline-block;
+}
+
+.project.intro .content .more {
+  text-decoration: underline;
+  font-weight: 700;
+  padding-left: 0.3em;
+}
+
+.project .content img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.project .content .left {
+  display: inline-block;
+  width: 35%;
+}
+
+.project .content .right {
+  display: inline-block;
+  width: 60%;
 }
 
 /* archive */
@@ -403,6 +469,9 @@ code.lang-markdown .bullet {
     font-size: 1em;
   }
   .article {
+    margin: 1em 0 2.5em;
+  }
+  .project {
     margin: 1em 0 2.5em;
   }
   .archive {
