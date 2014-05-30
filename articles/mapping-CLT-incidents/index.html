@@ -21,16 +21,85 @@
     <div id="content">
       <div class="content-wrap">
         <article class="article">
-          <section class="content"><p>Using the traffic incident feed from the City of Charlotte to map accidents and other road related&nbsp;incidents.</p>
+          <section class="content"><p>Using the traffic incident data from the City of Charlotte’s <span class="caps">RSS</span> Feed to transform and map incident&nbsp;geodata.</p>
+<p><span class="more"></span></p>
+<h4 id="background">Background</h4>
+<p>Many different local, state, and federal governments use <span class="caps">RSS</span>/GeoRSS feeds to keep the public and stakeholders informed.  To use a location based GeoRSS feed for
+modern web mapping, the feed has to be converted from XML to JSON/GeoJSON to integrate easily with a variety of open source mapping libraries.  The test feed is
+brought to us by the Charlotte, NC… “Charlotte’s Got A&nbsp;Lot.”</p>
+<p>The feed can be found at <a href="http://maps.cmpd.org/datafeeds/accidentsgeorss.ashx">http://maps.cmpd.org/datafeeds/accidentsgeorss.ashx</a>.  This feed comes to me from 
+<a href="https://github.com/invisiblefunnel">Danny Whalen</a> who is a 2014 <a href="http://codeforamerica.org/">Code for America</a> fellow working with the City of Charlotte to build innovative civic&nbsp;apps.</p>
+<h4 id="putting-node-js-to-work">Putting Node.js to&nbsp;Work</h4>
+<p>To retrieve the feed, transform the data, and map the incidents, I will be using <a href="http://nodejs.org/">Node.js</a> and the source can be found at 
+<a href="https://github.com/apburnes/clt_crash_map">https://github.com/apburnes/clt_crash_map</a>.</p>
+<p><strong>Get and Transofm the&nbsp;GeoRSS</strong></p>
+<h6 id="dependencies">Dependencies</h6>
+<ul>
+<li><a href="https://www.npmjs.org/package/request">request</a></li>
+<li><a href="https://www.npmjs.org/package/xml2js">xml2js</a></li>
+</ul>
+<h6 id="install">Install</h6>
+<p><code>npm install request</code></p>
+<p><code>npm install xml2js</code></p>
+<h5 id="get-the-data">Get the&nbsp;Data</h5>
+<pre><code class="lang-javascript">#!<span class="regexp">/bin/</span>env node
+<span class="comment">/*** getFeed.js ***/</span>
+
+<span class="comment">// Require and utilize the dependencies</span>
+<span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">'request'</span>);
+<span class="keyword">var</span> parseString = <span class="built_in">require</span>(<span class="string">'xml2js'</span>).parseString
+
+<span class="comment">// The location of the GeoRSS feed</span>
+<span class="keyword">var</span> url = <span class="string">"http://maps.cmpd.org/datafeeds/accidentsgeorss.ashx"</span>;
+
+<span class="comment">// Get and convert GeoRss <span class="caps">XML</span> to an array of objects</span>
+<span class="function"><span class="keyword">function</span> <span class="title">getGeoRss</span><span class="params">(url, done)</span> {</span>
+  request(url, <span class="function"><span class="keyword">function</span><span class="params">(err, res, body)</span> {</span>
+    <span class="keyword">if</span> (err) <span class="keyword">return</span> log(err);
+    parseString(body, <span class="function"><span class="keyword">function</span><span class="params">(err, result)</span> {</span>
+      <span class="keyword">if</span> (err) <span class="keyword">return</span> log(err);
+      <span class="keyword">var</span> events = result.rss.channel[<span class="number">0</span>].item;
+      done(<span class="literal">null</span>, events);
+    });
+  });
+}
+
+<span class="function"><span class="keyword">function</span> <span class="title">log</span><span class="params">(msg)</span> {</span>
+  console.log(msg);
+}
+
+exports.getGeoRss = getGeoRss;
+</code></pre>
+<h5 id="the-output">The&nbsp;Output</h5>
+<pre><code class="lang-bash">[{<span class="string">"type"</span>: <span class="string">"Feature"</span>,
+  <span class="string">"properties"</span>: [{
+    <span class="string">"title"</span>: <span class="string">"<span class="caps">TRAFFIC</span> CONTROL/MALFUNCTION at 707  PAVILION BV "</span>,
+    <span class="string">"eventNum"</span>: <span class="string">"O0529164400"</span>,
+    <span class="string">"dateAdded"</span>: <span class="string">"5/29/2014 4:44:16 <span class="caps">PM</span>"</span>,
+    <span class="string">"division"</span>: <span class="string">"<span class="caps">UNIVERSITY</span> CITY"</span>,
+    <span class="string">"address"</span>: <span class="string">"707  <span class="caps">PAVILION</span> BV "</span>,
+    <span class="string">"eventType"</span>: <span class="string">"<span class="caps">TF</span>-CNTRL"</span>,
+    <span class="string">"eventDesc"</span>: <span class="string">"<span class="caps">TRAFFIC</span> CONTROL/MALFUNCTION"</span>
+  }],
+  <span class="string">"geometry"</span>: [{
+    <span class="string">"type"</span>: <span class="string">"Point"</span>,
+    <span class="string">"coordinates"</span>: [
+      <span class="string">"-80.710670"</span>,
+      <span class="string">"35.327362"</span>
+    ]
+  }]
+}, ...]
+</code></pre>
 </section>
         </article>
       </div>
     </div>
     <footer>
       <div class="content-wrap">
-        <div class="nav"><a href="/">« Full blog</a></div>
+        <div class="nav"><a href="/">« Home</a></div>
         <section class="about"><h2 id="about">About</h2>
-<p><a href="http://apburnes.github.io/">Apburnes.github.io</a> is maintained by Andrew Burnes featuring general interests, projects, and ideas.  Please get in touch if you have any questions.</p>
+<p><a href="http://apburnes.github.io/">Apburnes.github.io</a> is maintained by Andrew Burnes featuring general interests, projects, and ideas.  Please get in touch if you have any questions
+or thoughts about my work.</p>
 <h2 id="contact">Contact</h2>
 <ul>
 <li><a href="http://www.twitter.com/apburnz">Twitter</a></li>
