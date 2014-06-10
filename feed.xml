@@ -5,9 +5,123 @@
     <atom:link href="//feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>/</link>
     <description>and other stuff.</description>
-    <pubDate>Wed, 28 May 2014 00:00:00 +0000</pubDate>
+    <pubDate>Wed, 04 Jun 2014 00:00:00 +0000</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Texecuted</title>
+      <link>//articles/texecute/</link>
+      <pubDate>Wed, 04 Jun 2014 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">//articles/texecute/</guid>
+      <author></author>
+      <description>&lt;p&gt;Using node.js to scrape the Texas Department of Criminal Justice list of executed inmates from 
+&lt;a href=&quot;http://www.tdcj.state.tx.us/death_row/dr_executed_offenders.html&quot;&gt;http://www.tdcj.state.tx.us/death_row/dr_executed_offenders.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&quot;background&quot;&gt;Background&lt;/h4&gt;
+&lt;p&gt;I came across this list via reddit &lt;a href=&quot;http://www.reddit.com/r/dataisbeautiful/comments/26rui7/oc_a_word_cloud_of_all_the_final_words_spoken_and/&quot;&gt;r/dataisbeautiful&lt;/a&gt;
+and a great word cloud derived from death row inmates’ last statements(written and spoken).  This list would be a good exercise to scrape and 
+wrangle the data into a usable JSON dataset.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Scrape, Transform, and Output&lt;/strong&gt;&lt;/p&gt;
+&lt;h6 id=&quot;dependencies&quot;&gt;Dependencies&lt;/h6&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.npmjs.org/package/request&quot;&gt;request&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.npmjs.org/package/cheerio&quot;&gt;cheerio&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&quot;install&quot;&gt;Install&lt;/h6&gt;
+&lt;p&gt;&lt;code&gt;npm install request --save&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;npm install cheerio --save&lt;/code&gt;&lt;/p&gt;
+&lt;h5 id=&quot;get-the-data&quot;&gt;Get the Data&lt;/h5&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// Add modules&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; request = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'request'&lt;/span&gt;);
+&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; $ = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'cheerio'&lt;/span&gt;);
+&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; fs = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'fs'&lt;/span&gt;);
+
+&lt;span class=&quot;comment&quot;&gt;// State of Texas executed list&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; url = &lt;span class=&quot;string&quot;&gt;'http://www.tdcj.state.tx.us/death_row/dr_executed_offenders.html'&lt;/span&gt;;
+
+&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Inmate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; {&lt;/span&gt;
+};
+
+&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;parseRows&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(url, done)&lt;/span&gt; {&lt;/span&gt;
+  request(url, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(err, res, html)&lt;/span&gt; {&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (err) &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; log(err);
+    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; parsedHtml = $.load(html);
+    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; json = [];
+    parsedHtml(&lt;span class=&quot;string&quot;&gt;'tr'&lt;/span&gt;).map(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(i, elem)&lt;/span&gt; {&lt;/span&gt;
+      &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (i &amp;gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;) {
+        &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; row = elem.children.filter(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(d)&lt;/span&gt; {&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; d.type === &lt;span class=&quot;string&quot;&gt;'tag'&lt;/span&gt; });
+        &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; inmate = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Inmate;
+        row.forEach(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(item, index, arr)&lt;/span&gt; {&lt;/span&gt;
+          &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; len = arr.length;
+          attrInmate(index, item, inmate, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(d)&lt;/span&gt; {&lt;/span&gt;
+            json.push(d);
+          });
+        });
+      }
+    }).end(done(json));
+  });
+}
+
+&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;attrInmate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(index, attr, inmate, done)&lt;/span&gt; {&lt;/span&gt;
+  &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (index === &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;) {
+    inmate.execution = attr.children[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;].data;
+  }
+  &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (index === &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;) {
+    inmate.lastName = attr.children[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;].data;
+  }
+  &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (index === &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;) {
+    inmate.firstName = attr.children[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;].data;
+  }
+  &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (index === &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;) {
+    inmate.tdcjNumber = attr.children[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;].data;
+  }
+  &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (index === &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;) {
+    inmate.age = attr.children[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;].data;
+  }
+  &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (index === &lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;) {
+    inmate.executionDate = attr.children[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;].data;
+  }
+  &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (index === &lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;) {
+    inmate.race = attr.children[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;].data;
+  }
+  &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (index === &lt;span class=&quot;number&quot;&gt;9&lt;/span&gt;) {
+    inmate.county = attr.children[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;].data;
+    done(inmate)
+  }
+}
+
+&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; {&lt;/span&gt;
+  &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; args = &lt;span class=&quot;built_in&quot;&gt;Array&lt;/span&gt;.prototype.slice.call(&lt;span class=&quot;built_in&quot;&gt;arguments&lt;/span&gt;);
+  args.forEach(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(item)&lt;/span&gt; {&lt;/span&gt;
+    console.log(item)
+  })
+}
+
+&lt;span class=&quot;comment&quot;&gt;// parseRows('http://www.tdcj.state.tx.us/death_row/dr_info/villegasjoselast.html')&lt;/span&gt;
+parseRows(url, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(json)&lt;/span&gt; {&lt;/span&gt;
+  &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; data = &lt;span class=&quot;built_in&quot;&gt;JSON&lt;/span&gt;.stringify(json, &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;);
+  fs.writeFile(&lt;span class=&quot;string&quot;&gt;'./executed.json'&lt;/span&gt;, data, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(err)&lt;/span&gt; {&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (err) &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; log(err);
+    log(&lt;span class=&quot;string&quot;&gt;'Finished'&lt;/span&gt;)
+  })
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&quot;output-executed-json&quot;&gt;Output executed.json&lt;/h5&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt;[
+  {
+    &lt;span class=&quot;string&quot;&gt;&quot;execution&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;515&quot;&lt;/span&gt;,
+    &lt;span class=&quot;string&quot;&gt;&quot;lastName&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;Villegas&quot;&lt;/span&gt;,
+    &lt;span class=&quot;string&quot;&gt;&quot;firstName&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;Jose&quot;&lt;/span&gt;,
+    &lt;span class=&quot;string&quot;&gt;&quot;tdcjNumber&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;999417&quot;&lt;/span&gt;,
+    &lt;span class=&quot;string&quot;&gt;&quot;age&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;39&quot;&lt;/span&gt;,
+    &lt;span class=&quot;string&quot;&gt;&quot;executionDate&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;04/16/2014&quot;&lt;/span&gt;,
+    &lt;span class=&quot;string&quot;&gt;&quot;race&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;Hispanic&quot;&lt;/span&gt;,
+    &lt;span class=&quot;string&quot;&gt;&quot;county&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;Nueces&quot;&lt;/span&gt;
+  }, ...]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Checkout the full dataset on Github &lt;a href=&quot;https://github.com/apburnes/texecuted&quot;&gt;https://github.com/apburnes/texecuted&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>Mapping a GeoRSS Feed</title>
       <link>//articles/mapping-CLT-incidents/</link>
@@ -63,7 +177,7 @@ brought to us by the Charlotte, NC… “Charlotte’s Got A Lot.”&lt;/p&gt;
 
 exports.getGeoRss = getGeoRss;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h5 id=&quot;the-output&quot;&gt;The Output&lt;/h5&gt;
+&lt;h5 id=&quot;console-output&quot;&gt;Console Output&lt;/h5&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;[{&lt;span class=&quot;string&quot;&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;Feature&quot;&lt;/span&gt;,
   &lt;span class=&quot;string&quot;&gt;&quot;properties&quot;&lt;/span&gt;: [{
     &lt;span class=&quot;string&quot;&gt;&quot;title&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;TRAFFIC CONTROL/MALFUNCTION at 707  PAVILION BV &quot;&lt;/span&gt;,
