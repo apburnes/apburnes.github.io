@@ -102,7 +102,6 @@ hr {
 }
 
 .header h1 {
-  text-align: center;
   margin-bottom: 0;
 }
 
@@ -288,7 +287,6 @@ footer .copy, footer .copy a {
 }
 
 .project header .date {
-/*   text-align: center; */
   font-size: 0.8em;
   margin-top: -0.7em;
 }
